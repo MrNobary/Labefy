@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { Home } from "./Pages/Home";
+import { Playlist } from "./Pages/Playlist";
+
+export default class App extends React.Component {
+
+  state = {
+    currentPage: 'Home',
+    currentPlaylistId: '',
+    currentPlaylistName: ''
+  }
+
+
+  goToPlaylist = (id, name) => {
+    this.setState({
+      currentPage: 'Playlist', 
+      currentPlaylistId: id,
+      currentPlaylistName: name
+    })
+  }
+
+  goToHome = () => {
+    this.setState({currentPage: 'Home', currentPlaylistId: '', currentPlaylistName:''})
+  }
+
+
+  changePage = () => {
+    switch(this.state.currentPage) {
+      case 'Home':
+        return <Home changePage={this.goToPlaylist}/>
+      case 'Playlist':
+        return <Playlist 
+        id={this.state.currentPlaylistId} 
+        name={this.state.currentPlaylistName}
+        changePage={this.goToHome}
+        />
+    }
+  }
+
+
+
+  render() {
+    return(
+      <div>
+        {this.changePage()}
+      </div>
+    )
+  }
 }
-
-export default App;
