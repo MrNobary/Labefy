@@ -18,7 +18,7 @@ Usando uma API privada do curso. Infelizmente não tem acesso a outras API'S de 
   <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" />
 </div>
 
-## Árvore de componentes
+## Fluxograma
 ![treeComponents](https://user-images.githubusercontent.com/77870818/231913085-bcade07c-8d85-4538-afe8-0f36513d4382.png)
 
 Pequeno diagrama para visualização dos componentes e transporte de props
